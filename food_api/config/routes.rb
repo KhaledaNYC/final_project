@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   resources :users
 
-  post '/login', to: 'sessions#create'
+
+
+  namespace :api do
+    namespace :v1 do
+      get '/hello', to: 'sessions#hello'
+      post '/login', to: 'sessions#create'
+      resources :sessions
+
+
+    end
+  end
 end
