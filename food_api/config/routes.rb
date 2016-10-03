@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :likes
+  resources :menus
+  resources :comments
+  resources :ingredients
+  resources :recipes
   resources :users
 
 
