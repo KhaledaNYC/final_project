@@ -3,7 +3,7 @@ module Api
 
     class RecipesController < ApplicationController
 
-      before_action find_recipe :show, :edit, :destroy, :update
+      before_action :find_recipe, only: [:show, :edit, :destroy, :update]
 
       def index
         render json: Recipe.all

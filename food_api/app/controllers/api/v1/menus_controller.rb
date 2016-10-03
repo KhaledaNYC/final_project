@@ -3,7 +3,7 @@ module Api
 
     class MenusController < ApplicationController
 
-      before_action find_menu :show, :edit, :destroy, :update
+      before_action :find_menu, only: [:show, :edit, :destroy, :update]
 
       def index
         render json: Menu.all

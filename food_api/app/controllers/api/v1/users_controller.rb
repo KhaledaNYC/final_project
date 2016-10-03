@@ -1,46 +1,53 @@
+module Api
+  module V1
+    class UsersController < ApplicationController
+      before_action :find_user, only: [:show, :edit, :destroy, :update]
 
-class UsersController < ApplicationController
+      def index
+        render json: User.all
+      end
 
-  before_action :find_user, only: [:show, :edit, :destroy, :update]
+      def show
+        render json: User.find(params[:id])
+      end
 
-  def index
-  end
+      def create
+        user = User.new(user_params)
+        if user.save
+          render json: user
+        else
+          render json: {status: 500, err: 'User could not be found'}
+        end
+      end
 
-  def show
-    @users = User.all
-  end
+      def update
+        user = User.find(params[:id])
+        if user.update(user_params)
+          render json: user
+        else
+          render json: {status: 500, err: 'User could not be updated'}
+        end
+      end
 
-  def new
-    @user = User.new(user_params)
-  end
+      def destroy
+        user = User.find(params[:id])
+        if user
+          user.destroy
+          head :ok
+        else
+          render json: {status: 400, err: "user with id of #{params[:id]} not found"}
+        end
+      end
 
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      sessions[:user_id] = @user.idea
-      redirect_to user_path(@user)
-    else
-      render 'new'
+
+      private
+
+      def find_user
+        @user = User.find(params[:id])
+      end
+        def user_params
+          params.require(:user).permit(:name, :password, :email, recipe_ids:[], menu_ids:[])
+        end
     end
   end
-
-  def edit
-  end
-
-  def update
-
-  end
-
-  def destroy
-  end
-
-
-  private
-
-  def find_user
-    @user = User.find(params[:id])
-  end
-    def user_params
-      params.require(:user).permit(:name, :password, :email, recipe_ids:[], menu_ids:[])
-    end
 end
