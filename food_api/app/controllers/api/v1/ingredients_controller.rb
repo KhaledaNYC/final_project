@@ -46,7 +46,7 @@ module Api
       private
 
       def ingredient_params
-        params.require(:ingredient).permit(:price, :name, :availability, recipe_ids:[])
+        params.require(:ingredient).permit(:price_level, :name, :availability)
       end
 
     end

@@ -14,7 +14,10 @@ class IngredientNew extends React.Component {
 
   newIngredientHandler(event){
     event.preventDefault()
-    const newIngredient = {name: this.refs.name.value, price_level: this.refs.price_level.value, availability: this.refs.availability.value}
+    const newIngredient = {
+      name: this.refs.name.value,
+      price_level: this.refs.price_level.value,
+      availability: this.refs.availability.value}
     this.props.actions.addIngredient(newIngredient)
   }
 
@@ -24,9 +27,9 @@ class IngredientNew extends React.Component {
         <form onSubmit={this.newIngredientHandler}>
           <label>name:</label>
           <input ref='name' /><br/>
-          <label>occasion:</label>
+          <label>price level:</label>
           <input ref='price_level' /><br/>
-          <label>description:</label>
+          <label>availability:</label>
           <input ref='availability' /><br/>
           <input type='submit' />
         </form>
