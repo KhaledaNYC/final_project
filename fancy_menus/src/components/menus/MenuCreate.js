@@ -14,7 +14,6 @@ class MenuNew extends React.Component {
   }
 
   newMenuHandler(event){
-    debugger
     event.preventDefault()
     const newMenu = {name: this.refs.name.value, occasion: this.refs.occasion.value, description: this.refs.description.value}
     this.props.actions.addMenu(newMenu)
