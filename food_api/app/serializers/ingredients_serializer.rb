@@ -1,4 +1,4 @@
 class IngredientSerializer < ActiveModel::Serializer
   attributes :id, :name, :avalibility, :price_level
-  has_many :ingredients, :users, :menus
+  has_many :users, :menus, :recipes
 end
