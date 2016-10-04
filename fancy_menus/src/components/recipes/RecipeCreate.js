@@ -32,6 +32,7 @@ class RecipeCreate extends React.Component {
   return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
 }
   render() {
+    debugger
     return (
 
       <div>
@@ -42,6 +43,7 @@ class RecipeCreate extends React.Component {
           <input ref='cooking_time' placeholder="cooking_time"/>
           <input ref='instructions' placeholder="instructions"/>
           <input ref='description' placeholder="description"/>
+          {this.makeIngredients()}
           <input type="submit" value="create new recipe"/>
         </form>
       </div>

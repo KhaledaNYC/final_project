@@ -1,19 +1,21 @@
-//
-// export function addRecipe(text){
-//   const recipe = [{ingredients: ["bechamel", "tomato", "lasagne", "mozzarella", "ricotta", "beef"], name: "lasagna", }]
-//   return {
-//     type: 'ADD_TODO',
-//     recipe
-//   }
-// }
-//
-// export function fetchRecipes(){
-//   const recipes = [{id: 1, name: 'Hamburger'}, {id: 2, name: "Steak"}];
-//
-// return {
-//   type: 'FETCH_RECIPES',
-//   payload: recipes
-// }
+export function addRecipe(newRecipeFromForm) {
+  const newRecipeFromApi = fetch('http://localhost:3000/api/v1/recipes', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({recipe: newRecipeFromForm})
+
+  }).then(response=> {
+    return response.json()
+  }).then(newRecipePayload => {
+    return newRecipePayload
+  })
+
+  return {type: 'ADD_RECIPE', payload: newRecipeFromApi}
+
+}
 
 export function fetchMenus(){
  const menus = fetch('http://localhost:3000/api/v1/menus').then(response => {
