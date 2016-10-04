@@ -10,12 +10,12 @@ class RecipeCreate extends React.Component {
   }
 
   newRecipeHandler(event) {
+    debugger;
     event.preventDefault()
     let ingredients = this.props.ingredients
     let checkedIngredients = ingredients.filter((ingredient) => this.refs[ingredient.id].checked )
     let idIngredients = checkedIngredients.map((ingredient) => (ingredient.id))
-    // const newCatName = event.target.children[1].value
-    // const newCatName = this.refs.input.value
+
     const newRecipe = {
       name: this.refs.name.value,
       cuisine_type: this.refs.cuisine_type.value,
@@ -38,7 +38,7 @@ class RecipeCreate extends React.Component {
       <div>
         <form onSubmit={this.newRecipeHandler}>
           <input ref='name' placeholder="name" />
-          <input ref='cuisine' placeholder="cuisine"/>
+          <input ref='cuisine_type' placeholder="cuisine"/>
           <input ref='difficulty_level' placeholder="difficulty_level"/>
           <input ref='cooking_time' placeholder="cooking_time"/>
           <input ref='instructions' placeholder="instructions"/>

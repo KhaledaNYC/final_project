@@ -6,7 +6,7 @@ module Api
       before_action :find_ingredient, only: [:show, :edit, :destroy, :update]
 
       def index
-        render json: Ingredient.all
+        render json: Ingredient.all, include: ['recipes']
       end
 
       def show
