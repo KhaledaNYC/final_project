@@ -19,8 +19,7 @@ function MenusIndex (props) {
 
 function mapStateToProps(state){
   return {
-    menus: state.menus,
-    ingredients: state.ingredients
+    menus: state.menus
   }
 }
 

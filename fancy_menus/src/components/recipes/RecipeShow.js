@@ -21,8 +21,9 @@ function RecipeShow (props) {
 }
 
 function mapStateToProps(state, ownProps) {
+  debugger
   if (state.recipes.length > 0) {
-    const recipe = state.recipes.find((recipes) => {return recipe.id === ownProps.params.id})
+    const recipe = state.recipes.find((recipe) => {return recipe.id == ownProps.params.id})
     return {recipe: recipe}
   } else {
     return {recipe: {name: 'default', cuisine: 'default', level_of_difficulty : '1', cooking_time: ') minutes', ingredients: ["none"]}}

@@ -1,15 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
+import NavBar from './NavBar';
+import { Link } from 'react-router';
 
 
-
-class App extends Component {
+export default class App extends React.Component {
   render() {
     return (
       <div>
-        {this.props.children}
+        <NavBar  title="Im a nav bar" url="/" />
+          <div className='root'>
+            { this.props.children }
+          </div>
+
       </div>
     );
   }
 }
-
-export default App;
