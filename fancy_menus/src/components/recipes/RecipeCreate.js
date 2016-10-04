@@ -10,11 +10,12 @@ class RecipeCreate extends React.Component {
   }
 
   newRecipeHandler(event) {
+    debugger;
     event.preventDefault()
-    // let ingredients = this.props.ingredients
-    // let checkedIngredients = ingredients.filter((ingredient) => this.refs[ingredient.id].checked )
-    // let idIngredients = checkedIngredients.map((ingredient) => (ingredient.id))
-    // const newCatName = event.target.children[1].value
+    let ingredients = this.props.ingredients
+    let checkedIngredients = ingredients.filter((ingredient) => this.refs[ingredient.id].checked )
+    let idIngredients = checkedIngredients.map((ingredient) => (ingredient.id))
+
     const newRecipe = {
       name: this.refs.name.value,
       cuisine_type: this.refs.cuisine_type.value,
@@ -26,10 +27,10 @@ class RecipeCreate extends React.Component {
     }
     this.props.actions.addRecipe(newRecipe)
   }
-//   makeIngredients() {
-//   let ingredients = this.props.ingredients
-//   return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
-// }
+  makeIngredients() {
+  let ingredients = this.props.ingredients
+  return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
+}
   render() {
     return (
 
