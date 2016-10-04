@@ -7,19 +7,21 @@ import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import { fetchRecipes} from './actions';
 import ReduxPromise from 'redux-promise';
+import { addMenu, fetchMenus, fetchRecipes } from './actions'
 
-
-// const createStoreWithMiddleware = applyMiddleware(ReduxPromise)
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 
-
-store.dispatch( fetchRecipes() ); //sets to new array, mapdispatchtoprops calls .dispatch on the action creator an
+store.dispatch( addMenu() );
+store.dispatch( fetchMenus() );
+store.dispatch( fetchRecipes() );
 
 console.log(store.getState());
 
 ReactDOM.render(
+
   <Provider store={store} >
     <Router history={browserHistory} routes={routes} />
     </Provider>,
+
   document.getElementById('root')
 );
