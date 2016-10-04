@@ -3,7 +3,7 @@ import * as actions from '../../actions/index'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-class RecipeNew extends React.Component {
+class RecipeCreate extends React.Component {
   constructor(props) {
     super(props)
     this.newRecipeHandler = this.newRecipeHandler.bind(this)
@@ -18,9 +18,11 @@ class RecipeNew extends React.Component {
     // const newCatName = this.refs.input.value
     const newRecipe = {
       name: this.refs.name.value,
-      breed: this.refs.breed.value,
-      weight: this.refs.weight.value,
-      tempermanet: this.refs.temp.value,
+      cuisine_type: this.refs.cuisine_type.value,
+      cooking_time: this.refs.cooking_time.value,
+      instructions: this.refs.instructions.value,
+      description: this.refs.description.value,
+      difficulty_level: this.refs.difficulty_level.value,
       ingredient_ids: idIngredients
     }
     this.props.actions.addRecipe(newRecipe)
@@ -31,13 +33,16 @@ class RecipeNew extends React.Component {
 }
   render() {
     return (
-      // {recipe: {name: 'default', cuisine: 'default', level_of_difficulty : '1', cooking_time: ') minutes', ingredients: ["none"]}}
+
       <div>
         <form onSubmit={this.newRecipeHandler}>
           <input ref='name' placeholder="name" />
           <input ref='cuisine' placeholder="cuisine"/>
-          <input ref='level_of_difficulty' placeholder="cuisine"/>
+          <input ref='difficulty_level' placeholder="difficulty_level"/>
           <input ref='cooking_time' placeholder="cooking_time"/>
+          <input ref='instructions' placeholder="instructions"/>
+          <input ref='description' placeholder="description"/>
+          <input type="submit" value="create new recipe"/>
         </form>
       </div>
     )
@@ -50,6 +55,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state, ownProps) {
+  debugger
   if (state.ingredients.length > 0) {
     return {ingredients: state.ingredients}
   }
@@ -59,4 +65,4 @@ function mapStateToProps(state, ownProps) {
 }
 
 const componentCreator = connect(mapStateToProps, mapDispatchToProps) //allows components to connect to store
-export default componentCreator(RecipeNew); //access to store through props
+export default componentCreator(RecipeCreate); //access to store through props
