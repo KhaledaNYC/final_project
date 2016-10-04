@@ -44,6 +44,21 @@ export function fetchRecipes(){
 
 }
 
+export function fetchIngredients(){
+
+ const ingredients = fetch('http://localhost:3000/api/v1/ingredients').then(response => {
+   return response.json()
+ }).then(ingredientsPayload => {
+   return ingredientsPayload
+ })
+
+ return {
+   type: 'FETCH_INGREDIENTS',
+   payload: ingredients
+ }
+
+}
+
 
 export function addMenu(newMenuFromForm) {
   const newMenuFromApi = fetch('http://localhost:3000/api/v1/menus', {

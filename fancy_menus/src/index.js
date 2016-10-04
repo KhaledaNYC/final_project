@@ -6,12 +6,13 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import rootReducer from './reducers';
 import ReduxPromise from 'redux-promise';
-import {fetchMenus, fetchRecipes } from './actions'
+import {fetchMenus, fetchRecipes, fetchIngredients } from './actions'
 
 const store = createStore(rootReducer, applyMiddleware(ReduxPromise));
 
 store.dispatch( fetchMenus() );
 store.dispatch( fetchRecipes() );
+store.dispatch( fetchIngredients() );
 
 console.log(store.getState());
 
