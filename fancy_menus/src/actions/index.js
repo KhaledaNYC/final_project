@@ -80,3 +80,22 @@ export function addMenu(newMenuFromForm) {
   return {type: 'ADD_MENU', payload: newMenuFromApi}
 
 }
+
+export function addIngredient(newIngredientFromForm) {
+  const newIngredientFromApi = fetch('http://localhost:3000/api/v1/ingredients', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ingredient: newIngredientFromForm})
+
+  }).then(response=> {
+    return response.json()
+  }).then(newIngredientPayload => {
+    return newIngredientPayload
+  })
+
+  return {type: 'ADD_INGREDIENT', payload: newIngredientFromApi}
+
+}
