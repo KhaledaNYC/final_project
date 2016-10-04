@@ -8,10 +8,9 @@ export default class App extends React.Component {
     return (
       <div>
         <NavBar  title="Im a nav bar" url="/" />
-          <div className='root'>
+          <div className='root container'>
             { this.props.children }
           </div>
-
       </div>
     );
   }
