@@ -44,7 +44,7 @@ module Api
       private
 
       def menu_params
-        params.require(:menu).permit(:text)
+        params.require(:menu).permit(:name, :occasion, :description)
       end
 
     end
