@@ -15,9 +15,19 @@ class MenuNew extends React.Component {
 
   newMenuHandler(event){
     event.preventDefault()
+    let recipes = this.props.recipes
+    let checkedRecipes = recipes.filter((recipe) => this.refs[recipe.id].checked )
+    let idRecipes = checkedRecipes.map((recipe) => (recipe.id))
+
+
     const newMenu = {name: this.refs.name.value, occasion: this.refs.occasion.value, description: this.refs.description.value}
     this.props.actions.addMenu(newMenu)
   }
+
+  makeRecipes() {
+  let recipes = this.props.recipes
+  return recipes.map((ingredient) => <div ref={`div${recipes.id}`}> <label>{recipes.name}</label><input type='checkbox' ref={`${recipes.id}`}/> </div>)
+}
 
   render(){
     return (
