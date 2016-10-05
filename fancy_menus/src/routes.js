@@ -14,6 +14,9 @@ import IngredientsIndex from './components/ingredients/IngredientsIndex'
 import IngredientCreate from './components/ingredients/IngredientCreate'
 import IngredientShow from './components/ingredients/IngredientShow'
 
+import UserShow from './components/users/UserShow'
+import UserCreate from './components/users/UserCreate'
+
 import FeaturedFoods from './components/FeaturedFoods'
 
 
@@ -34,6 +37,11 @@ export default(
       <Route path='/ingredients' component={IngredientsIndex}/>
       <Route path='/ingredients/new' component={IngredientCreate} />
       <Route path='/ingredients/:id' component={IngredientShow} />
+      
+      <Route path='/users/new' component={UserCreate}/>
+      <Route path='/users/:id' component={UserShow}/>
+
+
     </Route>
 
 )

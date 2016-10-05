@@ -4,16 +4,3 @@ body {
   font-family: sans-serif;
   background-color: green;
 }
-
-
-div.menus-square {
-  width: 250px;
-  height: 250px;
-  background-color: red;
-}
-
-#khaleda{
-  background-color: red;
-  width: 250px;
-  height: 250px;
-}

@@ -61,6 +61,21 @@ export function fetchIngredients(){
 
 }
 
+export function fetchUsers(){
+
+ const users = fetch('http://localhost:3000/api/v1/users').then(response => {
+   return response.json()
+ }).then(usersPayload => {
+   return usersPayload
+ })
+
+ return {
+   type: 'FETCH_USERS',
+   payload: users
+ }
+
+}
+
 
 export function addMenu(newMenuFromForm) {
   const newMenuFromApi = fetch('http://localhost:3000/api/v1/menus', {
@@ -97,5 +112,24 @@ export function addIngredient(newIngredientFromForm) {
   })
 
   return {type: 'ADD_INGREDIENT', payload: newIngredientFromApi}
+
+}
+
+export function addUser(newUserFromForm) {
+  const newUserFromApi = fetch('http://localhost:3000/api/v1/users', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({user: newUserFromForm})
+
+  }).then(response=> {
+    return response.json()
+  }).then(newUserPayload => {
+    return newUserPayload
+  })
+
+  return {type: 'ADD_USER', payload: newUserFromApi}
 
 }
