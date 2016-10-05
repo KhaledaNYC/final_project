@@ -58,7 +58,7 @@ function mapStateToProps(state, ownProps) {
     return {recipes: state.recipes}
   }
   else {
-    return {recipes: {name: ''}}
+    return {recipes: [{name: ''}]}
   }
 }
 
