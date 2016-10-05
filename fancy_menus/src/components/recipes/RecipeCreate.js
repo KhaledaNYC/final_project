@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 class RecipeCreate extends React.Component {
+
   constructor(props) {
     super(props)
     this.newRecipeHandler = this.newRecipeHandler.bind(this)
@@ -27,12 +28,13 @@ class RecipeCreate extends React.Component {
     this.props.actions.addRecipe(newRecipe)
   }
   makeIngredients() {
+
   let ingredients = this.props.ingredients
   return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
 }
   render() {
-    return (
 
+    return (
       <div>
         <form onSubmit={this.newRecipeHandler}>
           <input ref='name' placeholder="name" />
@@ -55,11 +57,12 @@ function mapDispatchToProps(dispatch) {
 }
 
 function mapStateToProps(state, ownProps) {
+
   if (state.ingredients.length > 0) {
     return {ingredients: state.ingredients}
   }
   else {
-    return {ingredients: {name: ''}}
+    return {ingredients: [{name: ''}]}
   }
 }
 
