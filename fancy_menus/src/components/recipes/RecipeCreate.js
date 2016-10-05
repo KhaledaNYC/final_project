@@ -2,8 +2,10 @@ import React from 'react'
 import * as actions from '../../actions/index'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import IngredientCreate from '../ingredients/IngredientCreate'
+import MenuCreate from '../menus/MenuCreate'
 class RecipeCreate extends React.Component {
+
 
   constructor(props) {
     super(props)
@@ -23,6 +25,7 @@ class RecipeCreate extends React.Component {
       instructions: this.refs.instructions.value,
       description: this.refs.description.value,
       difficulty_level: this.refs.difficulty_level.value,
+      course: this.refs.course.value,
       ingredient_ids: idIngredients
     }
     this.props.actions.addRecipe(newRecipe)
@@ -32,20 +35,34 @@ class RecipeCreate extends React.Component {
   let ingredients = this.props.ingredients
   return ingredients.map((ingredient) => <div ref={`div${ingredient.id}`}> <label>{ingredient.name}</label><input type='checkbox' ref={`${ingredient.id}`}/> </div>)
 }
+
+
   render() {
 
     return (
-      <div>
+      <div className='row'>
+        <h1>Create a New Recipe</h1>
+        <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
         <form onSubmit={this.newRecipeHandler}>
           <input ref='name' placeholder="name" />
           <input ref='cuisine_type' placeholder="cuisine"/>
           <input ref='difficulty_level' placeholder="difficulty_level"/>
           <input ref='cooking_time' placeholder="cooking_time"/>
           <input ref='instructions' placeholder="instructions"/>
-          <input ref='description' placeholder="description"/>
+          <input ref='description' placeholder="description"/><br/><br/>
+          <label/>Course:<br/>
+          <input ref='course' type="radio" name="course" value="main"/>Main
+          <input ref='course' type="radio" name="course" value="appetizer"/>Appetizer
+          <input ref='course' type="radio" name="course" value="dessert"/>Dessert<br/>
+          <label>Select Ingredients:</label><br/>
           {this.makeIngredients()}
           <input type="submit" value="create new recipe"/>
         </form>
+      </div>
+      <div className='col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6'>
+        <h4>Add a New Ingredient</h4>
+        <IngredientCreate />
+        </div>
       </div>
     )
   }
