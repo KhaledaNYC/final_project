@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar  title="Im a nav bar" url="/" />
+        <NavBar  title="Food" url="/" />
           <div className='root container'>
             { this.props.children }
           </div>
