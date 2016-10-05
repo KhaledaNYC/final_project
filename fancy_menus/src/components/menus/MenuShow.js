@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import MenuCreate from './MenuCreate'
 
 function MenuShow(props){
   return(
@@ -9,7 +10,6 @@ function MenuShow(props){
       <p>{props.menu.description}</p>
 
       <h4>Recipes</h4>
-
     </div>
   )
 }
