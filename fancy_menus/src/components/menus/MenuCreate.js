@@ -8,9 +8,6 @@ class MenuNew extends React.Component {
   constructor(props){
     super(props)
     this.newMenuHandler = this.newMenuHandler.bind(this)
-
-
-
   }
 
   newMenuHandler(event){
@@ -19,14 +16,18 @@ class MenuNew extends React.Component {
     let checkedRecipes = recipes.filter((recipe) => this.refs[recipe.id].checked )
     let idRecipes = checkedRecipes.map((recipe) => (recipe.id))
 
-
-    const newMenu = {name: this.refs.name.value, occasion: this.refs.occasion.value, description: this.refs.description.value}
+    const newMenu = {
+      name: this.refs.name.value,
+      occasion: this.refs.occasion.value,
+      description: this.refs.description.value,
+      recipe_ids: idRecipes
+    }
     this.props.actions.addMenu(newMenu)
   }
 
   makeRecipes() {
   let recipes = this.props.recipes
-  return recipes.map((ingredient) => <div ref={`div${recipes.id}`}> <label>{recipes.name}</label><input type='checkbox' ref={`${recipes.id}`}/> </div>)
+  return recipes.map((recipe) => <div ref={`div${recipe.id}`}> <label>{recipe.name}</label><input type='checkbox' ref={`${recipe.id}`}/> </div>)
 }
 
   render(){
@@ -39,6 +40,7 @@ class MenuNew extends React.Component {
           <input ref='occasion' /><br/>
           <label>description:</label>
           <input ref='description' /><br/>
+          {this.makeRecipes()}
           <input type='submit' />
         </form>
       </div>
@@ -51,5 +53,14 @@ function mapDispatchToProps(dispatch){
   return {actions: bindActionCreators(actions, dispatch)}
 }
 
-const componentCreator = connect(null, mapDispatchToProps)
+function mapStateToProps(state, ownProps) {
+  if (state.recipes.length > 0) {
+    return {recipes: state.recipes}
+  }
+  else {
+    return {recipes: {name: ''}}
+  }
+}
+
+const componentCreator = connect(mapStateToProps, mapDispatchToProps)
 export default componentCreator(MenuNew)

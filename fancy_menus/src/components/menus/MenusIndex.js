@@ -26,9 +26,10 @@ var styles = {
 }
 
 function MenusIndex (props) {
-debugger
   return(
     <div>
+    <Link to="/menus/new">Add a menu</Link>
+
         {props.menus.map(menu => <Link to={`/menus/${menu.id}`}>
           <div style={styles.menuSquare}><div style={styles.list} key={menu.id}>{menu.name}</div>
           </div>
