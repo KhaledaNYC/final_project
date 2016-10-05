@@ -4,9 +4,9 @@ import {connect} from 'react-redux';
 function MenuShow(props){
   return(
     <div>
-      <h3>{props.menu.name}</h3>
-      <h3>{props.menu.occasion}</h3>
-      <h3>{props.menu.description}</h3>
+      <h2>{props.menu.name}</h2>
+      <h4>{props.menu.occasion}</h4>
+      <p>{props.menu.description}</p>
 
       <h4>Recipes</h4>
 
